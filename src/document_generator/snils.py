@@ -1,7 +1,9 @@
+from dataclasses import asdict
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
+from src.augmentations import BaseAugmentation
 from src.document_data_generator.snils import SnilsDocumentDataGenerator
 from src.document_generator import BaseDocumentGenerator
 from src.output_formater.base_output_formater import BaseOutputFormater
@@ -23,35 +25,36 @@ class SnilsDocumentGenerator(BaseDocumentGenerator):
         self,
         output_path: Path,
         output_formater: BaseOutputFormater,
+        augmentation: BaseAugmentation,
     ):
         document_data_generator = SnilsDocumentDataGenerator()
-        annotations = document_data_generator.generate()
+        annotations = asdict(document_data_generator.generate())
         template = Image.open(self._template_path / "template.jpg")
         template = template.resize((800, 600))
         draw = ImageDraw.Draw(template)
         draw.text(
-            annotations.snils_number.bboxes,
-            annotations.snils_number.value,
+            annotations['snils_number']['bboxes'],
+            annotations['snils_number']['value'],
             font=self._font_bold,
             fill="black",
         )  # Пример координат
         draw.text(
-            annotations.family_name.bboxes, annotations.family_name.value.upper(), font=self._font, fill="black"
+            annotations['family_name']['bboxes'], annotations['family_name']['value'].upper(), font=self._font, fill="black"
         )  # Пример координат
         draw.text(
-            annotations.first_name.bboxes, annotations.first_name.value.upper(), font=self._font, fill="black"
+            annotations['first_name']['bboxes'], annotations['first_name']['value'].upper(), font=self._font, fill="black"
         )  # Пример координат
         draw.text(
-            annotations.middle_name.bboxes, annotations.middle_name.value.upper(), font=self._font, fill="black"
+            annotations['middle_name']['bboxes'], annotations['middle_name']['value'].upper(), font=self._font, fill="black"
         )  # Пример координат
         draw.text(
-            annotations.birth_date.bboxes, annotations.birth_date.value, font=self._font, fill="black"
+            annotations['birth_date']['bboxes'], annotations['birth_date']['value'], font=self._font, fill="black"
         )  # Пример координат
-        draw.text(annotations.city.bboxes, annotations.city.value.upper(), font=self._font, fill="black")
-        if annotations.region:
-            draw.text(annotations.region.bboxes, annotations.region.value.upper(), font=self._font, fill="black")
+        draw.text(annotations['city']['bboxes'], annotations['city']['value'].upper(), font=self._font, fill="black")
+        if annotations['region']:
+            draw.text(annotations['region']['bboxes'], annotations['region']['value'].upper(), font=self._font, fill="black")
 
-        draw.text(annotations.gender.bboxes, annotations.gender.value, font=self._font, fill="black")
-        draw.text(annotations.reg_date.bboxes, annotations.reg_date.value, font=self._font, fill="black")
-
-        output_formater.format(output_path=output_path, image=template, annotations=annotations.__dict__)
+        draw.text(annotations['gender']['bboxes'], annotations['gender']['value'], font=self._font, fill="black")
+        draw.text(annotations['reg_date']['bboxes'], annotations['reg_date']['value'], font=self._font, fill="black")
+        template, annotations = augmentation.apply(template, annotations)
+        output_formater.format(output_path=output_path, image=template, annotations=annotations)
