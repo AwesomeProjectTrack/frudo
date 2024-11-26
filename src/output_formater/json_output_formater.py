@@ -28,7 +28,7 @@ class JSONOutputFormater(BaseOutputFormater):
         image.save(image_folder / image_filename)
 
         json_filename = f"{uid}.json"
-        json_data = {key: asdict(value) for key, value in annotations.items()}
+        json_data = {key: value for key, value in annotations.items()}
         json_data["filename"] = str(image_folder / image_filename)
         with open(json_folder / json_filename, "w") as file:
             json.dump(json_data, file, indent=4)

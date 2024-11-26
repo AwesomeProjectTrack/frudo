@@ -22,7 +22,7 @@ def get_config(config_path: Path):
 @click.option("--config-path", help="Путь до конфига для запуска", type=click.Path(path_type=Path))
 def main(config_path: Path):
     config = get_config(config_path)
-    if Path(config.get("output_path")):
+    if Path(config.get("output_path")).exists():
         rmtree(config.get("output_path"))
     if config.get("document"):
         document_generators = [get_document_generator(name) for name in config.get("document")]
