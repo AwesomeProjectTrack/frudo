@@ -1,10 +1,9 @@
 from abc import ABCMeta, abstractmethod
-
-from src.document_data_generator.dataclasses import OutputDocumentData
+from typing import Any
 
 
 class BaseDocumentDataGenerator(metaclass=ABCMeta):
     @staticmethod
     @abstractmethod
-    def generate() -> list[OutputDocumentData]:
+    def generate() -> Any:
         pass

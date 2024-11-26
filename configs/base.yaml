@@ -1,0 +1,7 @@
+num_samples: 100
+document:
+ - snils
+augmentation:
+ - basic
+output_format: json
+output_path: validation_dataset

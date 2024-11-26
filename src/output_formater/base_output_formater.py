@@ -1,10 +1,12 @@
 from abc import ABCMeta, abstractmethod
 from pathlib import Path
 
-from src.document_data_generator.dataclasses import OutputDocumentData
+from PIL import Image
+
+from src.document_data_generator.dataclasses import Entity
 
 
 class BaseOutputFormater(metaclass=ABCMeta):
     @abstractmethod
-    def format(self, output_path: Path, annotations: list[OutputDocumentData], image_path: Path):
+    def format(self, output_path: Path, annotations: dict[str, Entity], image: Image):
         pass

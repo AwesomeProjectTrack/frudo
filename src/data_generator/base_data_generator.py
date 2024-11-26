@@ -1,10 +1,9 @@
 from abc import ABCMeta, abstractmethod
-
-from src.data_generator.dataclasses import OutputData
+from typing import Any
 
 
 class BaseDataGenerator(metaclass=ABCMeta):
     @staticmethod
     @abstractmethod
-    def generate() -> list[OutputData]:
+    def generate(*kwargs) -> Any:
         pass
