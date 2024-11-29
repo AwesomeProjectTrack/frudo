@@ -1,6 +1,5 @@
 import json
 import uuid
-from dataclasses import asdict
 from pathlib import Path
 
 from PIL import Image
