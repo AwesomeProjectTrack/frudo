@@ -1,3 +1,4 @@
+import random
 from pathlib import Path
 
 from src.augmentations.base_augmentation import BaseAugmentation
@@ -21,4 +22,8 @@ class Task:
     def execute(self, num_samples: int):
         for doc_generator in self._document_generators:
             for n_samples in range(num_samples):
-                doc_generator.generate(output_path=self._output_path, output_formater=self._output_formater)
+                doc_generator.generate(
+                    output_path=self._output_path,
+                    output_formater=self._output_formater,
+                    augmentation=random.choice(self._augmentations),
+                )
