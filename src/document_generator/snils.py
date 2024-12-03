@@ -26,6 +26,7 @@ class SnilsDocumentGenerator(BaseDocumentGenerator):
         output_path: Path,
         output_formater: BaseOutputFormater,
         augmentation: BaseAugmentation,
+        sample_index: int,
     ):
         document_data_generator = SnilsDocumentDataGenerator()
         annotations = asdict(document_data_generator.generate())

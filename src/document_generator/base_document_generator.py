@@ -10,5 +10,11 @@ class BaseDocumentGenerator(metaclass=ABCMeta):
         self._template_path: str | Path = template_path
 
     @abstractmethod
-    def generate(self, output_path: Path, output_formater: BaseOutputFormater, augmentation: BaseAugmentation):
+    def generate(
+        self,
+        output_path: Path,
+        output_formater: BaseOutputFormater,
+        augmentation: BaseAugmentation,
+        sample_index: int,  # порядковый номер для картинки в датасете
+    ):
         pass
