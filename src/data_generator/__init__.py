@@ -6,6 +6,6 @@ from src.data_generator.gender import Gender
 from src.data_generator.geo_place import GeoPlace
 from src.data_generator.geo_place_from_file import GeoPlaceFromFile
 from src.data_generator.passport_number import PassportNumber
-from src.data_generator.podr_number import PodrNumber
+from src.data_generator.podr_number import PodrazdelenieNumber
 from src.data_generator.rand_number import RandomNumber
 from src.data_generator.snils_number import SnilsNumber

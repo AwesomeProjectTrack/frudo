@@ -1,15 +1,15 @@
-# import json
-# import numpy as np
+
+
 
 from win32ctypes.pywin32.pywintypes import datetime
 
-from src.data_generator import (  # FullNameGenerator,; Gender,; GeoPlace,; SnilsNumber,
+from src.data_generator import (
     DateGenerator,
     DateVydPasspGenerator,
     FullNameFromFileGenerator,
     GeoPlaceFromFile,
     PassportNumber,
-    PodrNumber,
+    PodrazdelenieNumber,
 )
 from src.document_data_generator.base_document_data_generator import (
     BaseDocumentDataGenerator,
@@ -50,7 +50,7 @@ class PassportDocumentDataGenerator(BaseDocumentDataGenerator):
         birth_date_str = birth_date.strftime("%d.%m.%Y")
         vyd_date = DateVydPasspGenerator.generate(birth_date=birth_date)
         vyd_date_str = vyd_date.strftime("%d.%m.%Y")
-        nomer_podr = PodrNumber.generate()
+        nomer_podr = PodrazdelenieNumber.generate()
         sx = "муж." if name.gender == "М" else "жен."
 
         return PassportData(
