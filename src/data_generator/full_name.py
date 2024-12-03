@@ -22,4 +22,6 @@ class FullNameGenerator(BaseDataGenerator):
         else:
             raise ValueError("Невозможно сгенерировать данные")
 
-        return FullNameDataclass(last_name=last_name, middle_name=middle_name, first_name=first_name)
+        return FullNameDataclass(
+            last_name=last_name, middle_name=middle_name, first_name=first_name, gender=gender
+        )  # добавил пол в класс ФИО для единообразия
