@@ -12,7 +12,7 @@
 
 ## Установка библиотек
 В данной библиотеке используется poetry. Чтобы установить зависимости, необходимо сделать следюущие шаги:
-1. Инициализировать venv командной 
+1. Инициализировать venv командной
 ```shell
 poetry shell
 ```
@@ -21,11 +21,16 @@ poetry shell
 poetry install --no-root
 ```
 ## Как запустить:
-1. Определите, какие именно данные вам нужны
-2. Заполните конфиг в configs/base.yaml - в поле document укажите список нужных документов, которые вы хотите сгенерировать
-3. Если вы хотите, чтобы на сгенерированных изображениях были аугментации, укажите их в поле augmentation. По умолчанию аугментации не применяются.
-4. Запустите из корня репозитория команду
+1. Откройте файл src/pipeline.py и измените там __main__ в соответствии с вашими запросами. Пример
 ```shell
-python main.py --config-path configs/base.yaml
+if __name__ == "__main__":
+    Pipeline.generate(
+        num_samples=100,
+        document_types=[SnilsDocumentGenerator()],
+        output_formater=MTVQAOutputFormater(),
+    )
 ```
-
+2. Выполните команду
+```shell
+python src/pipeline.py
+```
