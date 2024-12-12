@@ -10,11 +10,12 @@
         ]
       }
     },
-    "postCreateCommand": "apt-get update && apt-get install -y git && pip install poetry && poetry install --no-root", // Установка Poetry и зависимостей
+    "postCreateCommand": "apt-get update && apt-get install -y git locales-all && pip install poetry && poetry install --no-root", // Установка Poetry и зависимостей
+    "postStartCommand": "export PYTHONPATH=. && poetry shell",
 
     "workspaceFolder": "/workspace",
+    "workspaceMount":  "source=${localWorkspaceFolder},target=/workspace,type=bind",
     "mounts": [
-      "source=${localWorkspaceFolder},target=/workspace,type=bind",
       "source=${env:HOME}/.ssh,target=/root/.ssh,type=bind"
     ]
   }
