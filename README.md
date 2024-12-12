@@ -33,6 +33,7 @@ poetry install --no-root
 2. File > Remote Development > Dev Container > New Dev Container > From local project 
 3. Укажите path to devcontainer.json
 4. Нажмите Build Container and Continue
+5. Начнется сборка. После сборки можно нажать кнопку Connect и подключиться внутрь контейнера
 
 ## Запуск
 1. Откройте файл src/pipeline.py и измените там __main__ в соответствии с вашими запросами. Пример
