@@ -10,6 +10,8 @@ class FullNameFromFileGenerator(BaseDataGenerator):
     @staticmethod
     def generate(gender: str = "мужской") -> Any:
         df_names = pd.read_csv("src/templates/names.csv")
+        # df_names = pd.read_parquet("src/templates/names.parquet")
+
         full_name = df_names.sample(1)
         last_name = full_name.iloc[0, 0]
         first_name = full_name.iloc[0, 1]

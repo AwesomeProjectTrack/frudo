@@ -1,13 +1,10 @@
 from abc import ABCMeta
-
-from PIL import Image
-
-from src.document_data_generator.dataclasses import Entity
+from pathlib import Path
 
 
 class BaseAugmentation(metaclass=ABCMeta):
     def __init__(self, **kwargs):
         pass
 
-    def apply(self, image: Image, annotations: dict[str, Entity]) -> tuple[Image, dict[str, Entity]]:
+    def apply(self, dataset_path) -> Path | str:
         pass

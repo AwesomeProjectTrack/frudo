@@ -3,16 +3,16 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-from src.augmentations import BaseAugmentation
 from src.document_data_generator.snils import SnilsDocumentDataGenerator
 from src.document_generator import BaseDocumentGenerator
-from src.output_formater.base_output_formater import BaseOutputFormater
 
 
 class SnilsDocumentGenerator(BaseDocumentGenerator):
-    def __init__(self, template_path: Path):
-        super().__init__(template_path)
-        self._font, self._font_bold = self.__get_font(template_path, 30)
+    def __init__(self):
+        super().__init__()
+        self._template_path = Path("src/templates/snils")
+        self._font, self._font_bold = self.__get_font(self._template_path, 30)
+        self._doc_type = "snils"
 
     def __get_font(self, template_path: Path, font_size: int = 30) -> tuple:
         font_path = template_path / "arialnarrow.ttf"
@@ -21,13 +21,7 @@ class SnilsDocumentGenerator(BaseDocumentGenerator):
         font_bold = ImageFont.truetype(font_bold_path, font_size)
         return font, font_bold
 
-    def generate(
-        self,
-        output_path: Path,
-        output_formater: BaseOutputFormater,
-        augmentation: BaseAugmentation,
-        sample_index: int,
-    ):
+    def _generate_one_sample(self) -> tuple[Image, dict]:
         document_data_generator = SnilsDocumentDataGenerator()
         annotations = asdict(document_data_generator.generate())
         template = Image.open(self._template_path / "template.jpg")
@@ -68,5 +62,16 @@ class SnilsDocumentGenerator(BaseDocumentGenerator):
 
         draw.text(annotations["gender"]["bboxes"], annotations["gender"]["value"], font=self._font, fill="black")
         draw.text(annotations["reg_date"]["bboxes"], annotations["reg_date"]["value"], font=self._font, fill="black")
-        template, annotations = augmentation.apply(template, annotations)
-        output_formater.format(output_path=output_path, image=template, annotations=annotations)
+        key_mapping = {
+            "gender": "Пол",
+            "first_name": "Имя",
+            "family_name": "Фамилия",
+            "middle_name": "Отчество",
+            "city": "Город",
+            "region": "Область",
+            "birth_date": "Дата рождения",
+            "reg_date": "Дата регистрации",
+            "snils_number": "Номер снилса",
+        }
+        annotations = {key_mapping.get(k, k): v for k, v in annotations.items()}
+        return template, annotations
