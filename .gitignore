@@ -199,3 +199,5 @@ fabric.properties
 /.idea/vcs.xml
 /.idea/inspectionProfiles/
 /.idea/
+/.idea/
+/src/templates/names.parquet
