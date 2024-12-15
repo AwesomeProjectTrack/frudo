@@ -1,4 +1,3 @@
-
 from src.document_generator import BaseDocumentGenerator, SnilsDocumentGenerator
 from src.output_formater.mtvqa_output_formater import MTVQAOutputFormater
 
@@ -23,9 +22,14 @@ class Pipeline:
             return originals_path
 
 
+
+
+
 if __name__ == "__main__":
     Pipeline.generate(
-        num_samples=100,
+        num_samples=5,
         document_types=[SnilsDocumentGenerator()],
         output_formater=MTVQAOutputFormater(),
     )
+
+

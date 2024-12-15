@@ -16,7 +16,7 @@
     "workspaceFolder": "/workspace",
     "workspaceMount":  "source=${localWorkspaceFolder},target=/workspace,type=bind",
     "mounts": [
-      "source=${env:HOME}/.ssh,target=/root/.ssh,type=bind"
+      //"source=${env:HOME}/.ssh,target=/root/.ssh,type=bind"
     ]
   }
   
