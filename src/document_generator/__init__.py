@@ -1,2 +1,3 @@
 from src.document_generator.base_document_generator import BaseDocumentGenerator
 from src.document_generator.snils import SnilsDocumentGenerator
+from src.document_generator.new_tins import NewTinsDocumentGenerator
