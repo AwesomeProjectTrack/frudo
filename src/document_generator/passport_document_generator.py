@@ -51,13 +51,28 @@ class PassportDocumentGenerator(BaseDocumentGenerator):
         pasp_image = self._put_photo(self, pasp_image, f"{self._photo_path}/{photos[photo_index]}")
         pasp_image = self._clean_passport_png(self, pasp_image)
         pasp_image = pasp_image.rotate(270, expand=True, fillcolor=1)  # поворачиваем паспорт вертикально
-
-        annotations["Класс документа"] = "Паспорт"
-        annotations["Страна"] = "Российская Федерация"
-        annotations["Печать"] = "CV макет Test"
-
+        key_mapping = {
+            "pser": "Серия паспорта",
+            "pnum": "Номер паспорта",
+            "vyd1": "Паспорт выдан (1 строка)",
+            "vyd2": "Паспорт выдан (2 строка)",
+            "vyd3": "Паспорт выдан (3 строка)",
+            "dvyd": "Дата выдачи",
+            "npod": "Номер подразделения",
+            "fam1": "Фамилия (1 строка)",
+            "fam2": "Фамилия (2 строка)",
+            "name": "Имя",
+            "fnam": "Отчество",
+            "bdat": "Дата рождения",
+            "sx": "Пол",
+            "bpl1": "Место рождения (1 строка)",
+            "bpl2": "Место рождения (2 строка)",
+            "bpl3": "Место рождения (3 строка)",
+        }
+        annotations = {key_mapping.get(k, k): v for k, v in annotations.items()}
         #os.remove(f"{self._temp_path}/{temp_name}.docx")
 
+        pasp_image = pasp_image.convert('RGB')
         return pasp_image, annotations
 
     @staticmethod
