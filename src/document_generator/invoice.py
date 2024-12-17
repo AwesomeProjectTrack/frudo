@@ -33,12 +33,16 @@ from src.output_formater import (
 class InvoiceDocumentGenerator(BaseDocumentGenerator):
     """InvoiceDocumentGenerator"""
 
+    def __init__(self):
+        super().__init__()
+        self._template_path = self._get_tamplate_path() / "invoice"
+
     def _generate_one_sample(self):
         pass
 
     def generate(self, num_samples: int) -> None:
-        master = Document(self._template_path + "invoice_blank.docx")
-        template = DocxTemplate(self._template_path + "invoice_template.docx")
+        master = Document(self._template_path / "invoice_blank.docx")
+        template = DocxTemplate(self._template_path / "invoice_template.docx")
         self.change_orientation(master)
         composer = Composer(master)
         annotations = []
@@ -53,11 +57,11 @@ class InvoiceDocumentGenerator(BaseDocumentGenerator):
                     context.update(values)
                 elif (key == "saler") or (key == "buyer"):
                     # # {'saler': {'name': 'something'}} -> {'saler_name': 'something'}
-                    temp_contex = {key + "_" + k: v for k, v in values}
+                    temp_contex = {key + "_" + k: v for k, v in values.items()}
                     context.update(temp_contex)
                 elif key == "items":
                     for item_num, item in enumerate(values, start=1):
-                        temp_contex = {k + item_num: v for k, v in item}
+                        temp_contex = {k + str(item_num): v for k, v in item.items()}
                         context.update(temp_contex)
             # Insert Everyting inside Word document
             template.render(context)
@@ -70,9 +74,8 @@ class InvoiceDocumentGenerator(BaseDocumentGenerator):
         pdf_invoice_formatter = InvoicePDFOutputter()
         # Save Main Information
         word_path = word_invoice_outputter.format(composer)
-        jsons_folder_path = json_invoice_outputter.format(annotations)
-        # Create Images
         pdf_path = pdf_invoice_formatter.format(input_path=word_path)
+        jsons_folder_path = json_invoice_outputter.format(annotations)
         images_folder_path = images_invoice_formatter.format(input_path=pdf_path)
         return {
             "images": images_folder_path,

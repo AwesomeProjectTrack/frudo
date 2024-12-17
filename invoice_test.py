@@ -1,3 +1,3 @@
-from src.document_data_generator.invoice import InvoiceDocumentDataGenerator
+from src.document_generator import InvoiceDocumentGenerator
 
-invoice = InvoiceDocumentDataGenerator().generate()
+InvoiceDocumentGenerator().generate(num_samples=10)
