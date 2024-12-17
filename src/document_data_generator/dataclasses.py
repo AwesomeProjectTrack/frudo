@@ -1,14 +1,26 @@
+""" Dataclasses for Document Data after generation"""
 from dataclasses import dataclass
+
+from src.data_generator import (
+    InvoiceCompanyData,
+    InvoiceDateTimeData,
+    InvoiceFinancialData,
+    InvoiceItemData,
+)
 
 
 @dataclass
 class Entity:
+    """Structure of each Entity"""
+
     value: str
     bboxes: list[int | float]
 
 
 @dataclass
 class SnilsData:
+    """Snils Data Structure"""
+
     snils_number: Entity
     family_name: Entity
     middle_name: Entity
@@ -58,3 +70,11 @@ class PassportData:
     ['BPL2', 'Место рождения (2 строка)'],
     ['BPL3', 'Место рождения (3 строка)']
 """
+class InvoiceData:
+    """Invoice Data Structure"""
+
+    saler: InvoiceCompanyData
+    buyer: InvoiceCompanyData
+    items: list[InvoiceItemData]
+    datatime: InvoiceDateTimeData
+    financial: InvoiceFinancialData

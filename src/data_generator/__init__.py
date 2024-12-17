@@ -1,3 +1,9 @@
+from src.data_generator.dataclasses import (
+    InvoiceCompanyData,
+    InvoiceDateTimeData,
+    InvoiceFinancialData,
+    InvoiceItemData,
+)
 from src.data_generator.date import DateGenerator
 from src.data_generator.date_vyd_passp import DateVydPasspGenerator
 from src.data_generator.full_name import FullNameGenerator
@@ -8,4 +14,9 @@ from src.data_generator.geo_place_from_file import GeoPlaceFromFile
 from src.data_generator.passport_number import PassportNumber
 from src.data_generator.podr_number import PodrazdelenieNumber
 from src.data_generator.rand_number import RandomNumber
+from src.data_generator.invoice import (
+    InvoiceCompanyGenerator,
+    InvoiceDataTimeGenerator,
+    InvoiceItemGenerator,
+)
 from src.data_generator.snils_number import SnilsNumber
