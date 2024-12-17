@@ -1,9 +1,10 @@
-from PIL import Image
+import shutil
+from pathlib import Path
 
 from src.augmentations import BaseAugmentation
-from src.document_data_generator.dataclasses import Entity
 
 
 class BasicAugmentation(BaseAugmentation):
-    def apply(self, image: Image, annotations: dict[str, Entity]) -> tuple[Image, dict[str, Entity]]:
-        return image, annotations
+    def apply(self, dataset_path: Path) -> Path | str:
+        shutil.copytree(dataset_path, dataset_path.parents[0] / "basic")
+        return dataset_path.parents[0] / "basic"
