@@ -22,9 +22,14 @@ class Pipeline:
             return originals_path
 
 
+
+
+
 if __name__ == "__main__":
     Pipeline.generate(
-        num_samples=100,
+        num_samples=5,
         document_types=[SnilsDocumentGenerator()],
         output_formater=MTVQAOutputFormater(),
     )
+
+
