@@ -16,6 +16,7 @@ pandas = "^2.2.3"
 spire-doc = "^12.7.1"
 docxtpl = "^0.19.0"
 colorama = "^0.4.6"
+requests = "^2.32.3"
 
 
 [build-system]
