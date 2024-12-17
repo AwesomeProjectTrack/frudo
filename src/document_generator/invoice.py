@@ -1,11 +1,6 @@
 """ Invoice Document Generator """
-from dataclasses import asdict
-
 # System Imports
-# import os
-# import time
-# import json
-from pathlib import Path
+from dataclasses import asdict
 
 # Word Documents Templating
 from docx import Document
@@ -14,12 +9,21 @@ from docxcompose.composer import Composer
 from docxtpl import DocxTemplate
 
 # Base Augmantations and Output Format
-from src.augmentations import BaseAugmentation
+# from src.augmentations import BaseAugmentation
 from src.document_data_generator.invoice import InvoiceDocumentDataGenerator
 
 # Base methods for class realisation
 from src.document_generator import BaseDocumentGenerator
-from src.output_formater.base_output_formater import BaseOutputFormater
+from src.output_formater import (
+    InvoiceIMAGEOutputter,
+    InvoiceJSONOutputter,
+    InvoicePDFOutputter,
+    InvoiceWORDOutputter,
+)
+
+# import time
+# import json
+
 
 # Word Document -> PDF -> Image
 # from docx2pdf import convert
@@ -29,32 +33,16 @@ from src.output_formater.base_output_formater import BaseOutputFormater
 class InvoiceDocumentGenerator(BaseDocumentGenerator):
     """InvoiceDocumentGenerator"""
 
-    def __init__(self, template_path: Path, quantity: int):
-        super().__init__(template_path)
-        self.quantity = quantity  # Количество счет-фактур
+    def _generate_one_sample(self):
+        pass
 
-    def change_orientation(self, document):
-        """Change orientation of the page in word document"""
-        current_section = document.sections[-1]
-        new_width, new_height = current_section.page_height, current_section.page_width
-        new_section = document.add_section(WD_SECTION.NEW_PAGE)
-        new_section.orientation = WD_ORIENT.LANDSCAPE
-        new_section.page_width = new_width
-        new_section.page_height = new_height
-        return new_section
-
-    def generate(
-        self,
-        output_path: Path,
-        output_formater: BaseOutputFormater,
-        augmentation: BaseAugmentation,
-    ):
+    def generate(self, num_samples: int) -> None:
         master = Document(self._template_path + "invoice_blank.docx")
         template = DocxTemplate(self._template_path + "invoice_template.docx")
         self.change_orientation(master)
         composer = Composer(master)
         annotations = []
-        for _ in range(self.quantity):
+        for _ in range(num_samples):
             document_data_generator = InvoiceDocumentDataGenerator()
             annotation = asdict(document_data_generator.generate())
             annotations.append(annotation)
@@ -75,7 +63,30 @@ class InvoiceDocumentGenerator(BaseDocumentGenerator):
             template.render(context)
             template.add_page_break()
             composer.append(template)
+        # Saving Process
+        images_invoice_formatter = InvoiceIMAGEOutputter()
+        json_invoice_outputter = InvoiceJSONOutputter()
+        word_invoice_outputter = InvoiceWORDOutputter()
+        pdf_invoice_formatter = InvoicePDFOutputter()
+        # Save Main Information
+        word_path = word_invoice_outputter.format(composer)
+        jsons_folder_path = json_invoice_outputter.format(annotations)
+        # Create Images
+        pdf_path = pdf_invoice_formatter.format(input_path=word_path)
+        images_folder_path = images_invoice_formatter.format(input_path=pdf_path)
+        return {
+            "images": images_folder_path,
+            "jsons": jsons_folder_path,
+            "word": word_path,
+            "pdf": pdf_path,
+        }
 
-        # TODO дописать сохранятель word документа в Word, PDF, Images, Jsones
-        # template, annotations = augmentation.apply(template, annotations)
-        # output_formater.format(output_path=output_path, image=template, annotations=annotations)
+    def change_orientation(self, document):
+        """Change orientation of the page in word document"""
+        current_section = document.sections[-1]
+        new_width, new_height = current_section.page_height, current_section.page_width
+        new_section = document.add_section(WD_SECTION.NEW_PAGE)
+        new_section.orientation = WD_ORIENT.LANDSCAPE
+        new_section.page_width = new_width
+        new_section.page_height = new_height
+        return new_section

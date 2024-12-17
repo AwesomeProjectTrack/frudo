@@ -7,7 +7,7 @@ import yaml
 from src.augmentations import get_augmentations
 from src.document_generator import get_document_generator
 from src.output_formater import get_output_formater
-from src.task import Task
+from src.pipeline import Task
 
 
 def get_config(config_path: Path):
