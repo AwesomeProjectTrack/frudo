@@ -24,6 +24,7 @@ class SnilsDocumentGenerator(BaseDocumentGenerator):
     def _generate_one_sample(self) -> tuple[Image, dict]:
         document_data_generator = SnilsDocumentDataGenerator()
         annotations = asdict(document_data_generator.generate())
+
         template = Image.open(self._template_path / "template.jpg")
         template = template.resize((800, 600))
         draw = ImageDraw.Draw(template)
