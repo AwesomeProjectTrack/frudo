@@ -6,6 +6,7 @@ class FullNameDataclass:
     last_name: str
     middle_name: str
     first_name: str
+    gender: str  # добавил пол в класс для единообразия
 
 
 @dataclass
@@ -14,7 +15,10 @@ class GeoPlaceDataclass:
     region: str
 
 
-# TODO - пока у меня нет bbox, поэтому Entity не использовал
+@dataclass
+class FullPassportNumber:
+    pser: str
+    pnum: str
 
 
 @dataclass

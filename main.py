@@ -5,9 +5,12 @@ import click
 import yaml
 
 from src.augmentations import get_augmentations
-from src.document_generator import get_document_generator
-from src.output_formater import get_output_formater
-from src.pipeline import Task
+
+# from src.document_generator import get_document_generator
+from src.document_generator.passport_document_generator import PassportDocumentGenerator
+
+# from src.output_formater import get_output_formater
+# from src.pipeline import Task
 
 
 def get_config(config_path: Path):
@@ -21,6 +24,7 @@ def get_config(config_path: Path):
 @click.command()
 @click.option("--config-path", help="Путь до конфига для запуска", type=click.Path(path_type=Path))
 def main(config_path: Path):
+    #"""
     config = get_config(config_path)
     if Path(config.get("output_path")).exists():
         rmtree(config.get("output_path"))
@@ -44,6 +48,21 @@ def main(config_path: Path):
         output_path=config.get("output_path") or "validation_dataset",
     )
     task.execute(config.get("num_samples"))
+    #"""
+    """
+    #подменял код выше этим для локального теста по паспортам
+    augmentations = [get_augmentations("basic_aug")]
+    output_formater = get_output_formater("json")
+    test_passport = PassportDocumentGenerator(Path('src/templates/passport'))
+    test_passport.generate(output_path=Path("src/templates/results"), output_formater = output_formater, augmentation = augmentations, sample_index = 1)
+    """
+
+    """
+    #print(os.getcwd())
+    test_pasp = PassportDocumentGenerator()
+    im, d = test_pasp._generate_one_sample()
+    im.save('src/templates/results/im.png')
+    """
 
 
 if __name__ == "__main__":
