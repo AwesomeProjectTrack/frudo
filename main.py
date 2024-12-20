@@ -49,6 +49,6 @@ def main(config_path: Path):
 if __name__ == "__main__":
     Pipeline.generate(
         num_samples=5,
-        document_types=[SnilsDocumentGenerator()],
+        document_types=[(NewTinsDocumentGenerator())],
         output_formater=MTVQAOutputFormater(),
     )

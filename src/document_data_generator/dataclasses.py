@@ -41,7 +41,8 @@ class InvoiceData:
     items: list[InvoiceItemData]
     datatime: InvoiceDateTimeData
     financial: InvoiceFinancialData
-    
+
+
 @dataclass
 class NewTinsData:
     """Tins Data Structure for new version of tins"""
@@ -57,7 +58,8 @@ class NewTinsData:
     region: Entity
     gender: Entity
     full_place: Entity
-    
+
+
 @dataclass
 class OldTinsData:
     """Tins Data Structure for old version of tins"""

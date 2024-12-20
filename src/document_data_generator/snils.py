@@ -27,7 +27,7 @@ class SnilsDocumentDataGenerator(BaseDocumentDataGenerator):
 
         snils_number = SnilsNumber.generate()
 
-        with open("src/templates/snils/data.json", "r", encoding= "utf-8") as file:
+        with open("src/templates/snils/data.json", "r", encoding="utf-8") as file:
             anno = json.load(file)
         anno = anno["annotations"][0]["result"]
 
