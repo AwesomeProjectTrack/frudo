@@ -13,7 +13,7 @@ from src.document_data_generator.dataclasses import InvoiceData, InvoiceFinancia
 
 
 class InvoiceDocumentDataGenerator(BaseDocumentDataGenerator):
-    """SnilsDocumentDataGenerator"""
+    """InvoiceDocumentDataGenerator"""
 
     @staticmethod
     def generate() -> InvoiceData:

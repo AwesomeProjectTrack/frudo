@@ -24,7 +24,7 @@ def get_config(config_path: Path):
 @click.command()
 @click.option("--config-path", help="Путь до конфига для запуска", type=click.Path(path_type=Path))
 def main(config_path: Path):
-    #"""
+    # """
     config = get_config(config_path)
     if Path(config.get("output_path")).exists():
         rmtree(config.get("output_path"))
@@ -48,7 +48,7 @@ def main(config_path: Path):
         output_path=config.get("output_path") or "validation_dataset",
     )
     task.execute(config.get("num_samples"))
-    #"""
+    # """
     """
     #подменял код выше этим для локального теста по паспортам
     augmentations = [get_augmentations("basic_aug")]
@@ -68,6 +68,6 @@ def main(config_path: Path):
 if __name__ == "__main__":
     Pipeline.generate(
         num_samples=5,
-        document_types=[(NewTinsDocumentGenerator())],
+        document_types=[SnilsDocumentGenerator()],
         output_formater=MTVQAOutputFormater(),
     )
