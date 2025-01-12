@@ -21,14 +21,6 @@ from src.output_formater import (
     InvoiceWORDOutputter,
 )
 
-# import time
-# import json
-
-
-# Word Document -> PDF -> Image
-# from docx2pdf import convert
-# from pdf2image import convert_from_path
-
 
 class InvoiceDocumentGenerator(BaseDocumentGenerator):
     """InvoiceDocumentGenerator"""

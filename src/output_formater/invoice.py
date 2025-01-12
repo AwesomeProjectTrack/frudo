@@ -56,7 +56,7 @@ class InvoiceIMAGEOutputter:
             output_path = Path(output_path)
         if not output_path.exists():
             output_path.mkdir(exist_ok=True, parents=True)
-        images = convert_from_path(input_path)
+        images = convert_from_path(input_path, dpi=400)
         # Save pages as images in the pdf
         for i in range(1, len(images) - 1):
             images[i].save(output_path / f"image_{str(i)}.png", "PNG")
