@@ -2,6 +2,14 @@ from dataclasses import dataclass
 
 
 @dataclass
+class Entity:
+    """Structure of each Entity"""
+
+    value: str
+    bboxes: list[int | float]
+
+
+@dataclass
 class FullNameDataclass:
     last_name: str
     middle_name: str
@@ -25,37 +33,37 @@ class FullPassportNumber:
 class InvoiceDateTimeData:
     """InvoiceDateTimeData"""
 
-    N: int
-    day: int
-    month: int
-    year: int
+    N: Entity
+    day: Entity
+    month: Entity
+    year: Entity
 
 
 @dataclass
 class InvoiceCompanyData:
     """InvoiceCompanyData"""
 
-    name: int
-    address: int
-    iin_kpp: int
+    name: Entity
+    address: Entity
+    iin_kpp: Entity
 
 
 @dataclass
 class InvoiceItemData:
     """InvoiceItemData"""
 
-    item_name: str
-    iq: float  # Количество товара
-    io: float  # Цена за единицу
-    inetcost: float  # Суммарная стоимость без налога
-    inc: float  # Сумма налога
-    igen_cost: float  # Итоговая стоимость (себестоимость + налог)
+    item_name: Entity
+    iq: Entity  # Количество товара
+    io: Entity  # Цена за единицу
+    inetcost: Entity  # Суммарная стоимость без налога
+    inc: Entity  # Сумма налога
+    igen_cost: Entity  # Итоговая стоимость (себестоимость + налог)
 
 
 @dataclass
 class InvoiceFinancialData:
     """InvoiceItemData"""
 
-    ncs: float  # Общая сумма налога
-    netsum: float  # Общая себестоимость товаров
-    gen_cost: float  # Общая стоимость (себестоимость + налог)
+    ncs: Entity  # Общая сумма налога
+    netsum: Entity  # Общая себестоимость товаров
+    gen_cost: Entity  # Общая стоимость (себестоимость + налог)

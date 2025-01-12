@@ -1,5 +1,6 @@
 from src.document_generator import (
     BaseDocumentGenerator,
+    InvoiceDocumentGenerator,
     NewTinsDocumentGenerator,
     OldTinsDocumentGenerator,
     SnilsDocumentGenerator,
@@ -29,7 +30,7 @@ class Pipeline:
 
 if __name__ == "__main__":
     Pipeline.generate(
-        num_samples=5,
-        document_types=[OldTinsDocumentGenerator()],
+        num_samples=1000,
+        document_types=[InvoiceDocumentGenerator()],
         output_formater=MTVQAOutputFormater(),
     )

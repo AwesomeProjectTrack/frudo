@@ -51,7 +51,7 @@ class InvoiceIMAGEOutputter:
         if input_path is None:
             input_path = Path(os.getcwd() + "/dataset/invoice/docs/" + "Invoices.pdf")
         if output_path is None:
-            output_path = Path(os.getcwd() + "/dataset/invoice/images/original")
+            output_path = Path(os.getcwd() + "/dataset/invoice/images/clean")
         if isinstance(output_path, str):
             output_path = Path(output_path)
         if not output_path.exists():
