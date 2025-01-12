@@ -1,5 +1,6 @@
 """ Invoice Document Generator """
 # System Imports
+# System Imports
 from dataclasses import asdict
 
 # Word Documents Templating
@@ -9,6 +10,7 @@ from docxcompose.composer import Composer
 from docxtpl import DocxTemplate
 
 # Base Augmantations and Output Format
+# from src.augmentations import BaseAugmentation
 # from src.augmentations import BaseAugmentation
 from src.document_data_generator.invoice import InvoiceDocumentDataGenerator
 
@@ -50,9 +52,11 @@ class InvoiceDocumentGenerator(BaseDocumentGenerator):
                 elif (key == "saler") or (key == "buyer"):
                     # # {'saler': {'name': 'something'}} -> {'saler_name': 'something'}
                     temp_contex = {key + "_" + k: v for k, v in values.items()}
+                    temp_contex = {key + "_" + k: v for k, v in values.items()}
                     context.update(temp_contex)
                 elif key == "items":
                     for item_num, item in enumerate(values, start=1):
+                        temp_contex = {k + str(item_num): v for k, v in item.items()}
                         temp_contex = {k + str(item_num): v for k, v in item.items()}
                         context.update(temp_contex)
             # Insert Everyting inside Word document
