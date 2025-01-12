@@ -6,7 +6,7 @@
 !.vscode/*.code-snippets
 .DS_Store
 
-.datasets/
+dataset/
 
 # Local History for Visual Studio Code
 .history/
