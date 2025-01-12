@@ -30,6 +30,6 @@ class Pipeline:
 if __name__ == "__main__":
     Pipeline.generate(
         num_samples=5,
-        document_types=[OldTinsDocumentGenerator()],
+        document_types=[NewTinsDocumentGenerator()],
         output_formater=MTVQAOutputFormater(),
     )

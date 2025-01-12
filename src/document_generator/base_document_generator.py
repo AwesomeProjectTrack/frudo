@@ -29,11 +29,24 @@ class BaseDocumentGenerator(metaclass=ABCMeta):
         (output_path / "jsons").mkdir(exist_ok=True, parents=True)
         for index in range(num_samples):
             template, annotation = self._generate_one_sample()
-            template.save(output_path / "images" / "clean" / f"{index}.jpg")
+            if not isinstance(template, list):
+                template.save(output_path / "images" / "clean" / f"{index}.jpg")
+            else: 
+                multipage_document_path = Path(output_path / "images" / "clean" / f"{index}")
+                if not multipage_document_path.exists():
+                        multipage_document_path.mkdir(parents=True)
+                for i, image in enumerate(template):
+                    image.save(output_path / "images" / "clean" / f"{index}" / f"{i}.jpg")
             annotation = {
-                "fields": annotation,
-                "index": index,
-            }
+                    "fields": annotation,
+                    "index": index,
+                }
             with open(output_path / "jsons" / f"{index}.json", "w", encoding="utf-8") as f:
                 json.dump(annotation, f, ensure_ascii=False, indent=4)
+                
+                    
         return output_path
+
+
+
+
