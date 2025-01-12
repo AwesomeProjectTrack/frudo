@@ -17,7 +17,7 @@ class InvoiceDocumentDataGenerator(BaseDocumentDataGenerator):
 
     @staticmethod
     def generate() -> InvoiceData:
-        saler = InvoiceCompanyGenerator().generate()
+        seller = InvoiceCompanyGenerator().generate()
         buyer = InvoiceCompanyGenerator().generate()
         datetime = InvoiceDataTimeGenerator.generate()
         items_quantity = randint(1, 3)
@@ -30,9 +30,9 @@ class InvoiceDocumentDataGenerator(BaseDocumentDataGenerator):
             netsum += item.inetcost
             gen_cost += item.igen_cost
         return InvoiceData(
-            saler=saler,
+            seller=seller,
             buyer=buyer,
             items=items,
-            datatime=datetime,
+            datetime=datetime,
             financial=InvoiceFinancialData(ncs=ncs, netsum=netsum, gen_cost=gen_cost),
         )

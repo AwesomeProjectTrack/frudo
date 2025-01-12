@@ -72,13 +72,14 @@ class PassportData:
 """
 
 
+@dataclass
 class InvoiceData:
     """Invoice Data Structure"""
 
-    saler: InvoiceCompanyData
+    seller: InvoiceCompanyData
     buyer: InvoiceCompanyData
     items: list[InvoiceItemData]
-    datatime: InvoiceDateTimeData
+    datetime: InvoiceDateTimeData
     financial: InvoiceFinancialData
 
 

@@ -49,14 +49,12 @@ class InvoiceDocumentGenerator(BaseDocumentGenerator):
             for key, values in annotation.items():
                 if (key == "datetime") or (key == "financial"):
                     context.update(values)
-                elif (key == "saler") or (key == "buyer"):
+                elif (key == "seller") or (key == "buyer"):
                     # # {'saler': {'name': 'something'}} -> {'saler_name': 'something'}
-                    temp_contex = {key + "_" + k: v for k, v in values.items()}
                     temp_contex = {key + "_" + k: v for k, v in values.items()}
                     context.update(temp_contex)
                 elif key == "items":
                     for item_num, item in enumerate(values, start=1):
-                        temp_contex = {k + str(item_num): v for k, v in item.items()}
                         temp_contex = {k + str(item_num): v for k, v in item.items()}
                         context.update(temp_contex)
             # Insert Everyting inside Word document
