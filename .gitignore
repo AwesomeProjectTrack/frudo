@@ -201,3 +201,6 @@ fabric.properties
 /.idea/
 /.idea/
 /src/templates/names.parquet
+
+.devcontainer
+.DS_Store
