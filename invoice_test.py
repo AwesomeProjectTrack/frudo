@@ -1,6 +1,7 @@
-from dataclasses import asdict
+from src.document_generator import InvoiceDocumentGenerator
 
-from src.document_data_generator.invoice import InvoiceDocumentDataGenerator
+InvoiceDocumentGenerator().generate(num_samples=2)
 
-invoice = InvoiceDocumentDataGenerator().generate()
-asdict(invoice)
+from src.document_generator import SnilsDocumentGenerator
+
+SnilsDocumentGenerator().generate(num_samples=10)

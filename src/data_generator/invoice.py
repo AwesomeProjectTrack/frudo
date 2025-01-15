@@ -5,6 +5,7 @@ from faker import Faker
 
 from src.data_generator.base_data_generator import BaseDataGenerator
 from src.data_generator.dataclasses import (
+    Entity,
     InvoiceCompanyData,
     InvoiceDateTimeData,
     InvoiceItemData,
@@ -34,7 +35,10 @@ class InvoiceDataTimeGenerator(BaseDataGenerator):
             12: "декабря",
         }
         return InvoiceDateTimeData(
-            N=randint(0, 100), day=randint(1, 30), month=months[randint(1, 12)], year=randint(2010, 2025)
+            N=Entity(value=str(randint(0, 100)), bboxes=[0, 0, 0, 0]),
+            day=Entity(value=str(randint(1, 30)), bboxes=[0, 0, 0, 0]),
+            month=Entity(value=months[randint(1, 12)], bboxes=[0, 0, 0, 0]),
+            year=Entity(value=str(randint(2010, 2025)), bboxes=[0, 0, 0, 0]),
         )
 
 
@@ -46,7 +50,11 @@ class InvoiceCompanyGenerator(BaseDataGenerator):
         """generate method"""
         address = str(randint(100000, 199999)) + "," + fake.city() + "," + fake.street_address()
         iin_kpp = fake.individuals_inn() + "/" + fake.kpp()
-        return InvoiceCompanyData(name=fake.company(), address=address, iin_kpp=iin_kpp)
+        return InvoiceCompanyData(
+            name=Entity(value=fake.company(), bboxes=[0, 0, 0, 0]),
+            address=Entity(value=address, bboxes=[0, 0, 0, 0]),
+            iin_kpp=Entity(value=iin_kpp, bboxes=[0, 0, 0, 0]),
+        )
 
 
 class InvoiceItemGenerator(BaseDataGenerator):
@@ -60,5 +68,10 @@ class InvoiceItemGenerator(BaseDataGenerator):
         inc = round(inetcost * 0.18)  # Сумма налога
         igen_cost = inetcost + inc  # Итоговая стоиость
         return InvoiceItemData(
-            item_name=fake.text(max_nb_chars=25), iq=iq, io=io, inetcost=inetcost, inc=inc, igen_cost=igen_cost
+            item_name=Entity(value=fake.text(max_nb_chars=25), bboxes=[0, 0, 0, 0]),
+            iq=Entity(value=str(iq), bboxes=[0, 0, 0, 0]),
+            io=Entity(value=str(io), bboxes=[0, 0, 0, 0]),
+            inetcost=Entity(value=str(inetcost), bboxes=[0, 0, 0, 0]),
+            inc=Entity(value=str(inc), bboxes=[0, 0, 0, 0]),
+            igen_cost=Entity(value=str(igen_cost), bboxes=[0, 0, 0, 0]),
         )

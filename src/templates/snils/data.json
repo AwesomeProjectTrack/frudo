@@ -1,0 +1,408 @@
+{
+    "id": 4,
+    "data": {
+        "ocr": "/data/upload/1/ac3cb6d5-snils_3.jpg"
+    },
+    "annotations": [
+        {
+            "id": 1,
+            "result": [
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 36.23822341857335,
+                        "y": 29.475100942126513,
+                        "width": 33.109017496635275,
+                        "height": 5.248990578734855,
+                        "rotation": 0
+                    },
+                    "id": "GlUt9BUJkG",
+                    "from_name": "bbox",
+                    "to_name": "image",
+                    "type": "rectangle",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 36.23822341857335,
+                        "y": 29.475100942126513,
+                        "width": 33.109017496635275,
+                        "height": 5.248990578734855,
+                        "rotation": 0,
+                        "text": [
+                            "номер"
+                        ]
+                    },
+                    "id": "GlUt9BUJkG",
+                    "from_name": "transcription",
+                    "to_name": "image",
+                    "type": "textarea",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 19.68371467025572,
+                        "y": 37.01211305518169,
+                        "width": 25.538358008075374,
+                        "height": 5.114401076716021,
+                        "rotation": 0
+                    },
+                    "id": "3XZNBIN-Qp",
+                    "from_name": "bbox",
+                    "to_name": "image",
+                    "type": "rectangle",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 19.68371467025572,
+                        "y": 37.01211305518169,
+                        "width": 25.538358008075374,
+                        "height": 5.114401076716021,
+                        "rotation": 0,
+                        "text": [
+                            "фамилия"
+                        ]
+                    },
+                    "id": "3XZNBIN-Qp",
+                    "from_name": "transcription",
+                    "to_name": "image",
+                    "type": "textarea",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 19.68371467025572,
+                        "y": 42.66487213997309,
+                        "width": 25.538358008075374,
+                        "height": 5.114401076716021,
+                        "rotation": 0
+                    },
+                    "id": "fwqdmO2AzT",
+                    "from_name": "bbox",
+                    "to_name": "image",
+                    "type": "rectangle",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 19.68371467025572,
+                        "y": 42.66487213997309,
+                        "width": 25.538358008075374,
+                        "height": 5.114401076716021,
+                        "rotation": 0,
+                        "text": [
+                            "имя"
+                        ]
+                    },
+                    "id": "fwqdmO2AzT",
+                    "from_name": "transcription",
+                    "to_name": "image",
+                    "type": "textarea",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 19.68371467025572,
+                        "y": 48.317631224764476,
+                        "width": 25.538358008075374,
+                        "height": 5.114401076716021,
+                        "rotation": 0
+                    },
+                    "id": "inpJQLszBr",
+                    "from_name": "bbox",
+                    "to_name": "image",
+                    "type": "rectangle",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 19.68371467025572,
+                        "y": 48.317631224764476,
+                        "width": 25.538358008075374,
+                        "height": 5.114401076716021,
+                        "rotation": 0,
+                        "text": [
+                            "отчество"
+                        ]
+                    },
+                    "id": "inpJQLszBr",
+                    "from_name": "transcription",
+                    "to_name": "image",
+                    "type": "textarea",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 56.93135935397039,
+                        "y": 55.04710632570661,
+                        "width": 25.538358008075374,
+                        "height": 5.114401076716021,
+                        "rotation": 0
+                    },
+                    "id": "WPA4MiVpYa",
+                    "from_name": "bbox",
+                    "to_name": "image",
+                    "type": "rectangle",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 56.93135935397039,
+                        "y": 55.04710632570661,
+                        "width": 25.538358008075374,
+                        "height": 5.114401076716021,
+                        "rotation": 0,
+                        "text": [
+                            "дата"
+                        ]
+                    },
+                    "id": "WPA4MiVpYa",
+                    "from_name": "transcription",
+                    "to_name": "image",
+                    "type": "textarea",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 20.49125168236878,
+                        "y": 61.64199192462989,
+                        "width": 25.538358008075374,
+                        "height": 5.114401076716021,
+                        "rotation": 0
+                    },
+                    "id": "SeJx0bP4yk",
+                    "from_name": "bbox",
+                    "to_name": "image",
+                    "type": "rectangle",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 20.49125168236878,
+                        "y": 61.64199192462989,
+                        "width": 25.538358008075374,
+                        "height": 5.114401076716021,
+                        "rotation": 0,
+                        "text": [
+                            "место 1"
+                        ]
+                    },
+                    "id": "SeJx0bP4yk",
+                    "from_name": "transcription",
+                    "to_name": "image",
+                    "type": "textarea",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 20.49125168236878,
+                        "y": 67.42934051144009,
+                        "width": 25.538358008075374,
+                        "height": 5.114401076716021,
+                        "rotation": 0
+                    },
+                    "id": "g4jWUE2nWy",
+                    "from_name": "bbox",
+                    "to_name": "image",
+                    "type": "rectangle",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 20.49125168236878,
+                        "y": 67.42934051144009,
+                        "width": 25.538358008075374,
+                        "height": 5.114401076716021,
+                        "rotation": 0,
+                        "text": [
+                            "место 2"
+                        ]
+                    },
+                    "id": "g4jWUE2nWy",
+                    "from_name": "transcription",
+                    "to_name": "image",
+                    "type": "textarea",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 20.49125168236878,
+                        "y": 73.21668909825033,
+                        "width": 25.538358008075374,
+                        "height": 5.114401076716021,
+                        "rotation": 0
+                    },
+                    "id": "ghYlb8GGar",
+                    "from_name": "bbox",
+                    "to_name": "image",
+                    "type": "rectangle",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 20.49125168236878,
+                        "y": 73.21668909825033,
+                        "width": 25.538358008075374,
+                        "height": 5.114401076716021,
+                        "rotation": 0,
+                        "text": [
+                            "место 3"
+                        ]
+                    },
+                    "id": "ghYlb8GGar",
+                    "from_name": "transcription",
+                    "to_name": "image",
+                    "type": "textarea",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 12.415881561238223,
+                        "y": 81.96500672947509,
+                        "width": 25.639300134589504,
+                        "height": 4.306864064602962,
+                        "rotation": 0
+                    },
+                    "id": "hetff8S1DW",
+                    "from_name": "bbox",
+                    "to_name": "image",
+                    "type": "rectangle",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 12.415881561238223,
+                        "y": 81.96500672947509,
+                        "width": 25.639300134589504,
+                        "height": 4.306864064602962,
+                        "rotation": 0,
+                        "text": [
+                            "пол"
+                        ]
+                    },
+                    "id": "hetff8S1DW",
+                    "from_name": "transcription",
+                    "to_name": "image",
+                    "type": "textarea",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 32.604306864064604,
+                        "y": 90.84791386271871,
+                        "width": 23.418573351278603,
+                        "height": 4.0376850605652805,
+                        "rotation": 0
+                    },
+                    "id": "oizKe3Pj4w",
+                    "from_name": "bbox",
+                    "to_name": "image",
+                    "type": "rectangle",
+                    "origin": "manual"
+                },
+                {
+                    "original_width": 800,
+                    "original_height": 600,
+                    "image_rotation": 0,
+                    "value": {
+                        "x": 32.604306864064604,
+                        "y": 90.84791386271871,
+                        "width": 23.418573351278603,
+                        "height": 4.0376850605652805,
+                        "rotation": 0,
+                        "text": [
+                            "дата рег"
+                        ]
+                    },
+                    "id": "oizKe3Pj4w",
+                    "from_name": "transcription",
+                    "to_name": "image",
+                    "type": "textarea",
+                    "origin": "manual"
+                }
+            ],
+            "created_username": " alica154323@gmail.com, 1",
+            "created_ago": "36 minutes",
+            "completed_by": {
+                "id": 1,
+                "first_name": "",
+                "last_name": "",
+                "avatar": "",
+                "email": "alica154323@gmail.com",
+                "initials": "al"
+            },
+            "was_cancelled": false,
+            "ground_truth": false,
+            "created_at": "2024-11-21T19:37:02.651743Z",
+            "updated_at": "2024-11-21T20:13:12.461000Z",
+            "draft_created_at": "2024-11-21T19:34:36.618134Z",
+            "lead_time": 855.751,
+            "import_id": "",
+            "last_action": "",
+            "task": 4,
+            "project": 1,
+            "updated_by": 1,
+            "parent_prediction": "",
+            "parent_annotation": "",
+            "last_created_by": ""
+        }
+    ],
+    "predictions": []
+}

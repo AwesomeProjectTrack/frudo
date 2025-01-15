@@ -9,7 +9,11 @@ from src.data_generator import (
 from src.document_data_generator.base_document_data_generator import (
     BaseDocumentDataGenerator,
 )
-from src.document_data_generator.dataclasses import InvoiceData, InvoiceFinancialData
+from src.document_data_generator.dataclasses import (
+    Entity,
+    InvoiceData,
+    InvoiceFinancialData,
+)
 
 
 class InvoiceDocumentDataGenerator(BaseDocumentDataGenerator):
@@ -17,7 +21,7 @@ class InvoiceDocumentDataGenerator(BaseDocumentDataGenerator):
 
     @staticmethod
     def generate() -> InvoiceData:
-        saler = InvoiceCompanyGenerator().generate()
+        seller = InvoiceCompanyGenerator().generate()
         buyer = InvoiceCompanyGenerator().generate()
         datetime = InvoiceDataTimeGenerator.generate()
         items_quantity = randint(1, 3)
@@ -26,13 +30,17 @@ class InvoiceDocumentDataGenerator(BaseDocumentDataGenerator):
         netsum = 0
         gen_cost = 0
         for item in items:
-            ncs += item.inc
-            netsum += item.inetcost
-            gen_cost += item.igen_cost
+            ncs += float(item.inc.value)
+            netsum += float(item.inetcost.value)
+            gen_cost += float(item.igen_cost.value)
         return InvoiceData(
-            saler=saler,
+            seller=seller,
             buyer=buyer,
             items=items,
-            datatime=datetime,
-            financial=InvoiceFinancialData(ncs=ncs, netsum=netsum, gen_cost=gen_cost),
+            datetime=datetime,
+            financial=InvoiceFinancialData(
+                ncs=Entity(value=str(ncs), bboxes=[0, 0, 0, 0]),
+                netsum=Entity(value=str(netsum), bboxes=[0, 0, 0, 0]),
+                gen_cost=Entity(value=str(gen_cost), bboxes=[0, 0, 0, 0]),
+            ),
         )

@@ -1,9 +1,9 @@
+# flake8: noqa
 import os
 from dataclasses import asdict
 from io import BytesIO
 from pathlib import Path
 from random import randint
-import tempfile
 
 from docxtpl import DocxTemplate
 from PIL import Image  # , ImageDraw, ImageFont
@@ -70,9 +70,9 @@ class PassportDocumentGenerator(BaseDocumentGenerator):
             "bpl3": "Место рождения (3 строка)",
         }
         annotations = {key_mapping.get(k, k): v for k, v in annotations.items()}
-        #os.remove(f"{self._temp_path}/{temp_name}.docx")
+        # os.remove(f"{self._temp_path}/{temp_name}.docx")
 
-        pasp_image = pasp_image.convert('RGB')
+        pasp_image = pasp_image.convert("RGB")
         return pasp_image, annotations
 
     @staticmethod

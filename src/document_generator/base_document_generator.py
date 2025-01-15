@@ -12,6 +12,13 @@ class BaseDocumentGenerator(metaclass=ABCMeta):
         self._doc_type: str | None = None
 
     @staticmethod
+    def _get_tamplate_path():
+        origin_path = Path("templates")
+        if not origin_path.exists():
+            origin_path.mkdir(exist_ok=True, parents=True)
+        return origin_path
+
+    @staticmethod
     def _get_output_path():
         origin_path = Path("dataset")
         if not origin_path.exists():
