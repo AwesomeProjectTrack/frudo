@@ -1,10 +1,10 @@
 from src.document_generator import (
     BaseDocumentGenerator,
+    InvoiceDocumentGenerator,
     PassportDocumentFromImageGenerator,
     PassportDocumentGenerator,
     SnilsDocumentGenerator,
-    InvoiceDocumentGenerator,
-    )
+)
 from src.output_formater.mtvqa_output_formater import MTVQAOutputFormater
 
 
@@ -23,9 +23,9 @@ class Pipeline:
         for document_type in document_types:
             originals_path = document_type.generate(num_samples=num_samples)
             if output_formater:
-                output_path = output_formater.format(originals_path, output_dataset_path)
-                #return output_path
-            #return originals_path
+                output_formater.format(originals_path, output_dataset_path)
+                # return output_path
+            # return originals_path
 
 
 if __name__ == "__main__":
@@ -35,7 +35,7 @@ if __name__ == "__main__":
             SnilsDocumentGenerator(),
             PassportDocumentGenerator(),
             PassportDocumentFromImageGenerator(),
-            #InvoiceDocumentGenerator(),
-            ],
+            # InvoiceDocumentGenerator(),
+        ],
         output_formater=MTVQAOutputFormater(),
     )
