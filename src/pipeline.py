@@ -1,7 +1,9 @@
 from src.document_generator import (
     BaseDocumentGenerator,
+    InterestFreeLoanAgreement,
     NewTinsDocumentGenerator,
     OldTinsDocumentGenerator,
+    PassportDocumentGenerator,
     SnilsDocumentGenerator,
 )
 from src.output_formater.mtvqa_output_formater import MTVQAOutputFormater
@@ -29,7 +31,7 @@ class Pipeline:
 
 if __name__ == "__main__":
     Pipeline.generate(
-        num_samples=5,
-        document_types=[NewTinsDocumentGenerator()],
-        output_formater=MTVQAOutputFormater(),
+        num_samples=100,
+        document_types=[()],
+        # output_formater=MTVQAOutputFormater(),
     )

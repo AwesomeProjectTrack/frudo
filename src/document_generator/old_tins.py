@@ -12,7 +12,7 @@ class OldTinsDocumentGenerator(BaseDocumentGenerator):
         super().__init__()
         self._template_path = Path("src/templates/tins")
         self._font, self._date_font = self.__get_font(self._template_path, 14)
-        self._doc_type = "tins"
+        self._doc_type = "old_tins"
 
     def __get_font(self, template_path: Path, font_size: int = 14) -> tuple:
         font_path = template_path / "timesnewromanpsmt.ttf"
