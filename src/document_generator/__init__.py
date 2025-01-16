@@ -2,4 +2,7 @@ from src.document_generator.base_document_generator import BaseDocumentGenerator
 from src.document_generator.new_tins import NewTinsDocumentGenerator
 from src.document_generator.old_tins import OldTinsDocumentGenerator
 from src.document_generator.passport_document_generator import PassportDocumentGenerator
+from src.document_generator.passport_from_images import (
+    PassportDocumentFromImageGenerator,
+)
 from src.document_generator.snils import SnilsDocumentGenerator
