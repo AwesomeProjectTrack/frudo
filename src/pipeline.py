@@ -2,8 +2,8 @@ from src.document_generator import (
     BaseDocumentGenerator,
     NewTinsDocumentGenerator,
     OldTinsDocumentGenerator,
+    PassportDocumentFromImageGenerator,
     SnilsDocumentGenerator,
-    PassportDocumentFromImageGenerator
 )
 from src.output_formater.mtvqa_output_formater import MTVQAOutputFormater
 
