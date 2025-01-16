@@ -3,6 +3,7 @@ from src.document_generator import (
     NewTinsDocumentGenerator,
     OldTinsDocumentGenerator,
     SnilsDocumentGenerator,
+    PassportDocumentFromImageGenerator
 )
 from src.output_formater.mtvqa_output_formater import MTVQAOutputFormater
 
@@ -30,6 +31,6 @@ class Pipeline:
 if __name__ == "__main__":
     Pipeline.generate(
         num_samples=5,
-        document_types=[OldTinsDocumentGenerator()],
+        document_types=[PassportDocumentFromImageGenerator()],
         output_formater=MTVQAOutputFormater(),
     )

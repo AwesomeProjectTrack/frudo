@@ -1,12 +1,12 @@
+# flake8: noqa: F405,E741
 import os
 from dataclasses import asdict
 from io import BytesIO
 from pathlib import Path
 from random import randint
-import tempfile
 
 from docxtpl import DocxTemplate
-from PIL import Image  # , ImageDraw, ImageFont
+from PIL import Image
 from spire.doc import *
 from spire.doc.common import *
 
@@ -51,29 +51,11 @@ class PassportDocumentGenerator(BaseDocumentGenerator):
         pasp_image = self._put_photo(self, pasp_image, f"{self._photo_path}/{photos[photo_index]}")
         pasp_image = self._clean_passport_png(self, pasp_image)
         pasp_image = pasp_image.rotate(270, expand=True, fillcolor=1)  # поворачиваем паспорт вертикально
-        key_mapping = {
-            "pser": "Серия паспорта",
-            "pnum": "Номер паспорта",
-            "vyd1": "Паспорт выдан (1 строка)",
-            "vyd2": "Паспорт выдан (2 строка)",
-            "vyd3": "Паспорт выдан (3 строка)",
-            "dvyd": "Дата выдачи",
-            "npod": "Номер подразделения",
-            "fam1": "Фамилия (1 строка)",
-            "fam2": "Фамилия (2 строка)",
-            "name": "Имя",
-            "fnam": "Отчество",
-            "bdat": "Дата рождения",
-            "sx": "Пол",
-            "bpl1": "Место рождения (1 строка)",
-            "bpl2": "Место рождения (2 строка)",
-            "bpl3": "Место рождения (3 строка)",
-        }
-        annotations = {key_mapping.get(k, k): v for k, v in annotations.items()}
-        #os.remove(f"{self._temp_path}/{temp_name}.docx")
 
-        pasp_image = pasp_image.convert('RGB')
-        return pasp_image, annotations
+        pasp_image = pasp_image.convert("RGB")
+        clean_annotations = self._get_clean_annotations(self, annotations)
+
+        return pasp_image, clean_annotations
 
     @staticmethod
     def _get_png(self, docx_path: str) -> Image:
@@ -84,10 +66,8 @@ class PassportDocumentGenerator(BaseDocumentGenerator):
         document.LoadFromFile(docx_path)
 
         document.JPEGQuality = 100
-        # document.SaveToFile("src/templates/results/im.pdf", FileFormat.PDF)
 
         imageStream = document.SaveImageToStreams(0, ImageType.Bitmap)
-        # Save the bitmap to PIL Image
         pasp_image = Image.open(BytesIO(imageStream.ToArray()))
 
         document.Close()
@@ -97,8 +77,7 @@ class PassportDocumentGenerator(BaseDocumentGenerator):
     @staticmethod
     def _put_photo(
         self, pasp_image: Image, photo_path: str, l: int = 465, u: int = 350, r: int = 580, d: int = 440
-    ) -> Image:  # Функция добавления фотографии, точки left, up, right, down (lower)
-        # def _put_photo(self, pasp_path, photo_path, ):
+    ) -> Image:
         """
         Функция добавления фотографии,
         pasp_image - type Image, изображение с паспортом
@@ -116,7 +95,6 @@ class PassportDocumentGenerator(BaseDocumentGenerator):
         photo = photo.rotate(90)
 
         pasp_image.paste(photo.resize((r - l, d - u)), (l, u))  # уменьшаем фото
-        # pasp_image.save(pasp_path)
 
         return pasp_image
 
@@ -136,3 +114,48 @@ class PassportDocumentGenerator(BaseDocumentGenerator):
         pasp_image = pasp_image.crop((l, u, r, d))
 
         return pasp_image
+
+    @staticmethod
+    def _get_clean_annotations(
+        self,
+        annotations: dict,
+    ) -> dict:
+        """
+        Функция для объединения отдельных строк паспорта
+        в полные значения:
+        - полное ФИО;
+        - полный номер (серия и номер);
+        - полное место рождения;
+        - полное место выдачи.
+        """
+
+        full_name = annotations["fam1"]["value"]
+        full_name = full_name + " " + annotations["fam2"]["value"] if annotations["fam2"]["value"] else full_name
+        full_name = full_name + " " + annotations["name"]["value"] + " " + annotations["fnam"]["value"]
+
+        full_place = annotations["vyd1"]["value"]
+        full_place = full_place + " " + annotations["vyd2"]["value"] if annotations["vyd2"]["value"] else full_place
+        full_place = full_place + " " + annotations["vyd3"]["value"] if annotations["vyd3"]["value"] else full_place
+
+        full_birth_place = annotations["bpl1"]["value"]
+        full_birth_place = (
+            full_birth_place + " " + annotations["bpl2"]["value"] if annotations["bpl2"]["value"] else full_birth_place
+        )
+        full_birth_place = (
+            full_birth_place + " " + annotations["bpl3"]["value"] if annotations["bpl3"]["value"] else full_birth_place
+        )
+
+        clean_annotations = {
+            "Полное имя": {"value": full_name, "bboxes": [0, 0]},
+            "Полный номер паспорта": {
+                "value": annotations["pser"]["value"] + " " + annotations["pnum"]["value"],
+                "bboxes": [0, 0],
+            },
+            "Полное место выдачи": {"value": full_place, "bboxes": [0, 0]},
+            "Полное место рождения": {"value": full_birth_place, "bboxes": [0, 0]},
+            "Дата выдачи": {"value": annotations["dvyd"]["value"], "bboxes": [0, 0]},
+            "Номер подразделения": {"value": annotations["npod"]["value"], "bboxes": [0, 0]},
+            "Дата рождения": {"value": annotations["bdat"]["value"], "bboxes": [0, 0]},
+            "Пол": {"value": annotations["sx"]["value"], "bboxes": [0, 0]},
+        }
+        return clean_annotations

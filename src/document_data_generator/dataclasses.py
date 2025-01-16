@@ -70,6 +70,8 @@ class PassportData:
     ['BPL2', 'Место рождения (2 строка)'],
     ['BPL3', 'Место рождения (3 строка)']
 """
+
+
 class InvoiceData:
     """Invoice Data Structure"""
 
