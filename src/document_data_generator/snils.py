@@ -14,9 +14,20 @@ from src.document_data_generator.dataclasses import Entity, SnilsData
 
 
 class SnilsDocumentDataGenerator(BaseDocumentDataGenerator):
+    
+    """Class Generator Russian Individual Insurance Account Number (SNILS)."""
+    
     @staticmethod
     def generate() -> SnilsData:
-        """Для Снилс нужны ФИО, место регистрации, дата рождения, дата регистрации"""
+        
+        """Generator method, returns an object of SnilsData class, 
+        which contains fields with the following information: 
+        last name, middle name,
+        first name, region of birth, 
+        city of birth, date of birth,
+        date of registration, gender, 
+        snils number"""
+        
         gender = Gender.generate()
         name = FullNameGenerator.generate(gender)
         place = GeoPlace.generate()

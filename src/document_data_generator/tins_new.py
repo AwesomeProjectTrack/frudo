@@ -18,8 +18,19 @@ from src.document_data_generator.dataclasses import Entity, NewTinsData
 
 
 class NewTinsDocumentDataGenerator(BaseDocumentDataGenerator):
+    
+    """Class, generates new Russian TINS samples."""
+    
     @staticmethod
     def generate() -> NewTinsData:
+        
+        """The generate method returns an object of class NewTinsData, 
+        which contains the following fields: 
+        tins number, last name, middle name, 
+        first name, date of birth, date of registration, 
+        city of birth, region of birth, 
+        full name of place of birth, gender."""
+        
         locale.setlocale(locale.LC_TIME, "ru_RU.UTF-8")
         gender = Gender.generate()
         name = FullNameGenerator.generate(gender)

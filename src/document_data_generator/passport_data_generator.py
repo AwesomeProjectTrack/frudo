@@ -16,30 +16,33 @@ from src.document_data_generator.dataclasses import Entity, PassportData
 
 
 class PassportDocumentDataGenerator(BaseDocumentDataGenerator):
+    
+    """Class passport generator."""
+    
     @staticmethod
     def generate() -> PassportData:
-        """Для паспорта заданы следующие аттрибуты:
+        
+        """The following attributes are set for the passport:
         keys_descr = {
-            "pser" : "Серия паспорта"
-            "pser2" : "Серия паспорта", на второй странице
-            "pnum" : "Номер паспорта"
-            "pnum2" : "Номер паспорта", на второй странице
-            "vyd1" : "Паспорт выдан (1 строка)",
-            "vyd2" : "Паспорт выдан (2 строка)",
-            "vyd3" : "Паспорт выдан (3 строка)",
-            "dvyd" : "Дата выдачи",
-            "npod" : "Номер подразделения",
-            "fam1" : "Фамилия (1 строка)",
-            "fam2" : "Фамилия (2 строка)",
-            "name" : "Имя",
-            "fnam" : "Отчество",
-            "bdat" : "Дата рождения",
-            "sx" : "Пол",
-            "bpl1" : "Место рождения (1 строка)",
-            "bpl2" : "Место рождения (2 строка)",
-            "bpl3" : "Место рождения (3 строка)",
+            “pser” : ‘Passport series’.
+            “pser2” : ‘Passport series’, on the second page.
+            “pnum” : ‘Passport number’.
+            “pnum2” : ‘Passport number’, on the second page.
+            “vyd1” : “Passport issued (line 1).”
+            “vyd2” : ”Passport issued (line 2).”
+            “vyd3” : “Passport issued (line 3).”
+            “dvyd” : ‘Date of issue’,
+            “npod” : ‘Unit number’,
+            “fam1” : “Surname (line 1)”,
+            “fam2” : ‘Surname (line 2)’,
+            “name” : ‘First name’,
+            “fnam” : ‘patronymic’,
+            “bdat” : ‘Date of birth’,
+            “sx” : ‘Gender’,
+            “bpl1” : “Place of birth (1 line)”,
+            “bpl2” : ‘Place of birth (line 2)’,
+            “bpl3” : “Place of birth (3rd line)”
         }
-
         """
         # gender = Gender.generate()
         name = FullNameFromFileGenerator.generate()

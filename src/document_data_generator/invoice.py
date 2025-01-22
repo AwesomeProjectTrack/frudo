@@ -17,6 +17,12 @@ class InvoiceDocumentDataGenerator(BaseDocumentDataGenerator):
 
     @staticmethod
     def generate() -> InvoiceData:
+        
+        """The method that generates an invoice returns an object of the 
+        InvoiceData class that contains the fields: 
+        seller, buyer, item, date and time as a single field and 
+        an object of the InvoiceFinancialData class."""
+        
         saler = InvoiceCompanyGenerator().generate()
         buyer = InvoiceCompanyGenerator().generate()
         datetime = InvoiceDataTimeGenerator.generate()

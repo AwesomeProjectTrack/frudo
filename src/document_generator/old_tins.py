@@ -8,19 +8,39 @@ from src.document_generator import BaseDocumentGenerator
 
 
 class OldTinsDocumentGenerator(BaseDocumentGenerator):
+    
+    """Class for generating a old TINS document."""
+
     def __init__(self):
+        
+        """Class Initialization:
+        _template_path: path to base image ,
+        _font - object obtained from __get_font method, which stores font for characters in the image,
+        _doc_type - document type """
+        
         super().__init__()
         self._template_path = Path("src/templates/tins")
         self._font, self._date_font = self.__get_font(self._template_path, 14)
         self._doc_type = "tins"
 
     def __get_font(self, template_path: Path, font_size: int = 14) -> tuple:
+        
+        """Method of font retrieval and preservation
+        template_path:Path - path to the folder with the font, 
+        font_size:int - font size."""
+        
         font_path = template_path / "timesnewromanpsmt.ttf"
         font = ImageFont.truetype(font_path, font_size)
         font_date = ImageFont.truetype(font_path, 12)
         return font, font_date
 
     def _generate_one_sample(self):
+        
+                
+        """One sample generator method, creates an old TINS document, 
+        returns the document itself as well as an annotation for it."""
+        
+        
         document_data_generator = OldTinsDocumentDataGenerator()
         annotations = asdict(document_data_generator.generate())
 

@@ -27,14 +27,20 @@ from src.output_formater.base_output_formater import BaseOutputFormater
 
 
 class InvoiceDocumentGenerator(BaseDocumentGenerator):
+    
     """InvoiceDocumentGenerator"""
 
     def __init__(self, template_path: Path, quantity: int):
+        
+        """Initialization of the path and number of invoices to generate."""
+        
         super().__init__(template_path)
         self.quantity = quantity  # Количество счет-фактур
 
     def change_orientation(self, document):
+        
         """Change orientation of the page in word document"""
+        
         current_section = document.sections[-1]
         new_width, new_height = current_section.page_height, current_section.page_width
         new_section = document.add_section(WD_SECTION.NEW_PAGE)
@@ -49,6 +55,13 @@ class InvoiceDocumentGenerator(BaseDocumentGenerator):
         output_formater: BaseOutputFormater,
         augmentation: BaseAugmentation,
     ):
+        
+        """Document Generation.
+            Input parameters:
+            path:Path - path to save generated files,
+            output_formatter: BaseOutputFormater - class object for defining the type of output files,
+            augmentation:BaseAugmentation - class object of augmentation applied to generated files."""
+        
         master = Document(self._template_path + "invoice_blank.docx")
         template = DocxTemplate(self._template_path + "invoice_template.docx")
         self.change_orientation(master)

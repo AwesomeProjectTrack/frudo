@@ -8,6 +8,9 @@ from src.document_generator import BaseDocumentGenerator
 
 
 class SnilsDocumentGenerator(BaseDocumentGenerator):
+    
+    """"""
+    
     def __init__(self):
         super().__init__()
         self._template_path = Path("src/templates/snils")
