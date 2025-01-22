@@ -3,8 +3,10 @@ from src.data_generator.rand_number import RandomNumber
 
 
 class PodrazdelenieNumber(BaseDataGenerator):
+    """ """
     @staticmethod
     def generate() -> str:
+        """ """
         n1 = RandomNumber.generate(n=3)
         n2 = RandomNumber.generate(n=3)
 

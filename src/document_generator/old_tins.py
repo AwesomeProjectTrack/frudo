@@ -37,8 +37,17 @@ class OldTinsDocumentGenerator(BaseDocumentGenerator):
     def _generate_one_sample(self):
         
                 
-        """One sample generator method, creates an old TINS document, 
-        returns the document itself as well as an annotation for it."""
+        """
+        One sample generator method, creates an old TINS document,
+        returns the document itself as well as an annotation for it.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
+        """
         
         
         document_data_generator = OldTinsDocumentDataGenerator()

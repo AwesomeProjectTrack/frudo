@@ -7,8 +7,21 @@ from src.data_generator.dataclasses import FullNameDataclass
 
 
 class FullNameFromFileGenerator(BaseDataGenerator):
+    """ """
     @staticmethod
     def generate(gender: str = "мужской") -> Any:
+        """
+        
+
+        Parameters
+        ----------
+        gender: str :
+             (Default value = "мужской")
+
+        Returns
+        -------
+
+        """
         df_names = pd.read_csv("src/templates/names.csv")
         # df_names = pd.read_parquet("src/templates/names.parquet")
 

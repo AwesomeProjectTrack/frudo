@@ -7,6 +7,21 @@ from src.document_data_generator.dataclasses import Entity
 
 
 class BaseOutputFormater(metaclass=ABCMeta):
+    """ """
     @abstractmethod
     def format(self, dataset_path, output_dataset_path) -> Path | str:
+        """
+        
+
+        Parameters
+        ----------
+        dataset_path :
+            
+        output_dataset_path :
+            
+
+        Returns
+        -------
+
+        """
         pass

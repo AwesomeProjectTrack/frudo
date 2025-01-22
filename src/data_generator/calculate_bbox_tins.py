@@ -7,6 +7,7 @@ from src.data_generator.base_data_generator import BaseDataGenerator
 
 
 class BboxTins(BaseDataGenerator):
+    """ """
     @staticmethod
     def generate(
         text: str,
@@ -16,6 +17,30 @@ class BboxTins(BaseDataGenerator):
         is_new_tin: bool = True,
         old_tin_number: bool = False,
     ):
+        """
+        
+
+        Parameters
+        ----------
+        text: str :
+            
+        old_coords: Union[list :
+            
+        tuple] :
+            
+        font: Path :
+             (Default value = None)
+        font_size: int :
+             (Default value = 25)
+        is_new_tin: bool :
+             (Default value = True)
+        old_tin_number: bool :
+             (Default value = False)
+
+        Returns
+        -------
+
+        """
         if is_new_tin:
             if font is None:
                 font = ImageFont.truetype("src/templates/tins/timesnewromanpsmt.ttf", font_size)

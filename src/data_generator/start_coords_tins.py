@@ -4,8 +4,27 @@ from src.data_generator.base_data_generator import BaseDataGenerator
 
 
 class StartCoords(BaseDataGenerator):
+    """ """
     @staticmethod
     def generate(width: int, height: int, is_new_tins: bool = True, is_old_tin_number: bool = False) -> dict:
+        """
+        
+
+        Parameters
+        ----------
+        width: int :
+            
+        height: int :
+            
+        is_new_tins: bool :
+             (Default value = True)
+        is_old_tin_number: bool :
+             (Default value = False)
+
+        Returns
+        -------
+
+        """
         if is_new_tins:
             return {
                 "place_of_birth": [width // 3, height // 2 + 45],

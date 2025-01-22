@@ -23,12 +23,21 @@ class OldTinsDocumentDataGenerator(BaseDocumentDataGenerator):
     @staticmethod
     def generate() -> OldTinsData:
         
-        """The generate method returns an object of class OldTinsData, 
-        which contains the following fields: 
-        tins number, last name, middle name, 
-        first name, date of birth, date of registration, 
-        city of birth, region of birth, 
-        full name of place of birth, gender"""
+        """
+        The generate method returns an object of class OldTinsData,
+        which contains the following fields:
+        tins number, last name, middle name,
+        first name, date of birth, date of registration,
+        city of birth, region of birth,
+        full name of place of birth, gender
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
+        """
         
         gender = Gender.generate()
         short_gender = gender[:3] + "."

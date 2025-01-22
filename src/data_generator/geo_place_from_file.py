@@ -8,8 +8,10 @@ from src.data_generator.dataclasses import GeoPlaceDataclass
 
 
 class GeoPlaceFromFile(BaseDataGenerator):
+    """ """
     @staticmethod
     def generate():
+        """ """
         # check file locally
         towns_path = Path("src/templates/towns.csv")
 

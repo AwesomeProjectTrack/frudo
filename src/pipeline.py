@@ -9,6 +9,7 @@ from src.output_formater.mtvqa_output_formater import MTVQAOutputFormater
 
 
 class Pipeline:
+    """ """
     def __init__(self):
         pass
 
@@ -20,6 +21,26 @@ class Pipeline:
         augmentations=None,
         output_dataset_path=None,
     ):
+        """
+        
+
+        Parameters
+        ----------
+        num_samples :
+            
+        document_types: list[BaseDocumentGenerator] :
+            
+        output_formater :
+             (Default value = None)
+        augmentations :
+             (Default value = None)
+        output_dataset_path :
+             (Default value = None)
+
+        Returns
+        -------
+
+        """
         for document_type in document_types:
             originals_path = document_type.generate(num_samples=num_samples)
             if output_formater:

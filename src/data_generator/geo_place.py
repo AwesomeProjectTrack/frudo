@@ -7,8 +7,10 @@ fake = Faker("ru_RU")
 
 
 class GeoPlace(BaseDataGenerator):
+    """ """
     @staticmethod
     def generate():
+        """ """
         city = fake.city()  # Генерация случайного города
         region = fake.region()  # Генерация случайной области (региона)
 

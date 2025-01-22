@@ -9,7 +9,7 @@ from src.document_generator import BaseDocumentGenerator
 
 class SnilsDocumentGenerator(BaseDocumentGenerator):
     
-    """"""
+    """ """
     
     def __init__(self):
         super().__init__()
@@ -25,6 +25,7 @@ class SnilsDocumentGenerator(BaseDocumentGenerator):
         return font, font_bold
 
     def _generate_one_sample(self) -> tuple[Image, dict]:
+        """ """
         document_data_generator = SnilsDocumentDataGenerator()
         annotations = asdict(document_data_generator.generate())
 

@@ -39,7 +39,18 @@ class InvoiceDocumentGenerator(BaseDocumentGenerator):
 
     def change_orientation(self, document):
         
-        """Change orientation of the page in word document"""
+        """
+        Change orientation of the page in word document
+
+        Parameters
+        ----------
+        document :
+            
+
+        Returns
+        -------
+
+        """
         
         current_section = document.sections[-1]
         new_width, new_height = current_section.page_height, current_section.page_width
@@ -56,11 +67,26 @@ class InvoiceDocumentGenerator(BaseDocumentGenerator):
         augmentation: BaseAugmentation,
     ):
         
-        """Document Generation.
+        """
+        Document Generation.
             Input parameters:
             path:Path - path to save generated files,
             output_formatter: BaseOutputFormater - class object for defining the type of output files,
-            augmentation:BaseAugmentation - class object of augmentation applied to generated files."""
+            augmentation:BaseAugmentation - class object of augmentation applied to generated files.
+
+        Parameters
+        ----------
+        output_path: Path :
+            
+        output_formater: BaseOutputFormater :
+            
+        augmentation: BaseAugmentation :
+            
+
+        Returns
+        -------
+
+        """
         
         master = Document(self._template_path + "invoice_blank.docx")
         template = DocxTemplate(self._template_path + "invoice_template.docx")

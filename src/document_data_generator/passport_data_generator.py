@@ -22,7 +22,8 @@ class PassportDocumentDataGenerator(BaseDocumentDataGenerator):
     @staticmethod
     def generate() -> PassportData:
         
-        """The following attributes are set for the passport:
+        """
+        The following attributes are set for the passport:
         keys_descr = {
             “pser” : ‘Passport series’.
             “pser2” : ‘Passport series’, on the second page.
@@ -43,6 +44,13 @@ class PassportDocumentDataGenerator(BaseDocumentDataGenerator):
             “bpl2” : ‘Place of birth (line 2)’,
             “bpl3” : “Place of birth (3rd line)”
         }
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
         """
         # gender = Gender.generate()
         name = FullNameFromFileGenerator.generate()

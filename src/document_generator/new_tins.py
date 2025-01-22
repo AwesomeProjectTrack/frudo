@@ -35,8 +35,17 @@ class NewTinsDocumentGenerator(BaseDocumentGenerator):
 
     def _generate_one_sample(self):
         
-        """One sample generator method, creates a new TINS document, 
-        returns the document itself as well as an annotation for it."""
+        """
+        One sample generator method, creates a new TINS document,
+        returns the document itself as well as an annotation for it.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
+        """
         
         document_data_generator = NewTinsDocumentDataGenerator()
         annotations = asdict(document_data_generator.generate())

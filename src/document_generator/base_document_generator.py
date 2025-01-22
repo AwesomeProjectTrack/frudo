@@ -6,22 +6,17 @@ from PIL import Image
 
 
 class BaseDocumentGenerator(metaclass=ABCMeta):
-    
     """Basic document generation class, when creating your own class, inherit from this class."""
     
     def __init__(self):
-        
         """Initialization of paths and document types"""
         
         self._template_path: str | Path = None
         self._output_path = self._get_output_path()
         self._doc_type: str | None = None
 
-    @staticmethod
-    def _get_output_path():
-        
+    def _get_output_path(self):
         """The method returns the path where the dataset is saved."""
-        
         origin_path = Path("dataset")
         if not origin_path.exists():
             origin_path.mkdir(exist_ok=True, parents=True)
@@ -29,12 +24,25 @@ class BaseDocumentGenerator(metaclass=ABCMeta):
 
     @abstractmethod
     def _generate_one_sample(self) -> tuple[Image, dict]:
+        """ """
         pass
 
     def generate(self, num_samples: int) -> Path | str:
+        """
+        A method for generating objects along a specified path.
+
+        Parameters
+        ----------
+        num_samples : int
+            Num samples of documents
+        num_samples: int :
+            
+
+        Returns
+        -------
+
         
-        """A method for generating objects along a specified path."""
-        
+        """
         output_path = self._output_path / self._doc_type
         output_path.mkdir(exist_ok=True, parents=True)
         (output_path / "images" / "clean").mkdir(exist_ok=True, parents=True)

@@ -8,23 +8,47 @@ from src.output_formater.base_output_formater import BaseOutputFormater
 
 
 class MTVQAOutputFormater(BaseOutputFormater):
+    """ """
     @staticmethod
     def load_json_from_file(file_path):
         """
         Загружает данные JSON из файла.
-
+        
         Параметры:
         file_path : str
             Путь к JSON файлу.
-
+        
         Возвращает:
         dict или list : Объект, загруженный из JSON.
+
+        Parameters
+        ----------
+        file_path :
+            
+
+        Returns
+        -------
+
         """
         with open(file_path, "r", encoding="utf-8") as file:
             data = json.load(file)
         return data
 
     def format(self, dataset_path: Path, output_dataset_path: Path | None) -> Path | str:
+        """
+        
+
+        Parameters
+        ----------
+        dataset_path: Path :
+            
+        output_dataset_path: Path | None :
+            
+
+        Returns
+        -------
+
+        """
         if not isinstance(dataset_path, Path):
             dataset_path = Path(dataset_path)
         if output_dataset_path is None:

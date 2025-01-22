@@ -3,7 +3,20 @@ from typing import Any
 
 
 class BaseDataGenerator(metaclass=ABCMeta):
+    """ """
     @staticmethod
     @abstractmethod
     def generate(*kwargs) -> Any:
+        """
+        
+
+        Parameters
+        ----------
+        *kwargs :
+            
+
+        Returns
+        -------
+
+        """
         pass

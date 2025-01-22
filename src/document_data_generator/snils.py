@@ -20,13 +20,22 @@ class SnilsDocumentDataGenerator(BaseDocumentDataGenerator):
     @staticmethod
     def generate() -> SnilsData:
         
-        """Generator method, returns an object of SnilsData class, 
-        which contains fields with the following information: 
+        """
+        Generator method, returns an object of SnilsData class,
+        which contains fields with the following information:
         last name, middle name,
-        first name, region of birth, 
+        first name, region of birth,
         city of birth, date of birth,
-        date of registration, gender, 
-        snils number"""
+        date of registration, gender,
+        snils number
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+
+        """
         
         gender = Gender.generate()
         name = FullNameGenerator.generate(gender)

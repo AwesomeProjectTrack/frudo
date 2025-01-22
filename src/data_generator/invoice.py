@@ -54,6 +54,7 @@ class InvoiceItemGenerator(BaseDataGenerator):
 
     @staticmethod
     def generate() -> InvoiceItemData:
+        """ """
         iq = randint(1, 5)  # quantity
         io = randint(1000, 9999)  # Цена за единицу
         inetcost = round(iq * io)  # Стоимость товаров

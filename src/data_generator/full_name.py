@@ -9,8 +9,21 @@ fake = Faker("ru_RU")
 
 
 class FullNameGenerator(BaseDataGenerator):
+    """ """
     @staticmethod
     def generate(gender: str = "мужской") -> Any:
+        """
+        
+
+        Parameters
+        ----------
+        gender: str :
+             (Default value = "мужской")
+
+        Returns
+        -------
+
+        """
         if gender == "женский":
             first_name = fake.first_name_female()
             last_name = fake.last_name_female()

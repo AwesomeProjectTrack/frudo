@@ -10,6 +10,7 @@ from src.document_generator import BaseDocumentGenerator
 
 
 class PassportDocumentFromImageGenerator(BaseDocumentGenerator):
+    """ """
     def __init__(self):
         super().__init__()
         self._template_path = Path("src/templates/passport_image")
@@ -25,6 +26,7 @@ class PassportDocumentFromImageGenerator(BaseDocumentGenerator):
         return font, font_bold
 
     def _generate_one_sample(self) -> tuple[Image, dict]:
+        """ """
         document_data_generator = PassportDocumentDataGenerator()
         annotations = asdict(document_data_generator.generate())
 
@@ -184,6 +186,25 @@ class PassportDocumentFromImageGenerator(BaseDocumentGenerator):
         u (int, default = 350) - координата верхней стороны вырезаемого квадрата под фотографию,
         r (int, default = 580) - координата правой стороны вырезаемого квадрата под фотографию,
         d (int, default = 440) - координата нижней стороны вырезаемого квадрата под фотографию,
+
+        Parameters
+        ----------
+        pasp_image: Image :
+            
+        photo_path: str :
+            
+        left: int :
+             (Default value = 220)
+        up: int :
+             (Default value = 2590)
+        right: int :
+             (Default value = 995)
+        down: int :
+             (Default value = 3580)
+
+        Returns
+        -------
+
         """
 
         with Image.open(photo_path) as photo:
@@ -205,6 +226,15 @@ class PassportDocumentFromImageGenerator(BaseDocumentGenerator):
         - полный номер (серия и номер);
         - полное место рождения;
         - полное место выдачи.
+
+        Parameters
+        ----------
+        annotations: dict :
+            
+
+        Returns
+        -------
+
         """
 
         full_name = annotations["fam1"]["value"]

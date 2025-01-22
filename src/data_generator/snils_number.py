@@ -4,8 +4,10 @@ from src.data_generator.base_data_generator import BaseDataGenerator
 
 
 class SnilsNumber(BaseDataGenerator):
+    """ """
     @staticmethod
     def generate() -> str:
+        """ """
         snils = [random.randint(0, 9) for _ in range(9)]
         control_sum = sum((9 - i) * num for i, num in enumerate(snils)) % 101
         if control_sum == 100:

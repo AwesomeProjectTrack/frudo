@@ -7,8 +7,8 @@ from random import randint
 
 from docxtpl import DocxTemplate
 from PIL import Image
-from spire.doc import *
-from spire.doc.common import *
+# from spire.doc import *
+# from spire.doc.common import *
 
 from src.document_data_generator.passport_data_generator import (
     PassportDocumentDataGenerator,
@@ -17,6 +17,7 @@ from src.document_generator import BaseDocumentGenerator
 
 
 class PassportDocumentGenerator(BaseDocumentGenerator):
+    """ """
     def __init__(self):
         super().__init__()
         self._template_path = Path("src/templates/passport")
@@ -26,6 +27,7 @@ class PassportDocumentGenerator(BaseDocumentGenerator):
         self._temp_path = Path("src/templates/temp/")
 
     def _generate_one_sample(self) -> tuple[Image, dict]:
+        """ """
         document_data = PassportDocumentDataGenerator()
         annotations = asdict(document_data.generate())
 
@@ -59,6 +61,18 @@ class PassportDocumentGenerator(BaseDocumentGenerator):
 
     @staticmethod
     def _get_png(self, docx_path: str) -> Image:
+        """
+        
+
+        Parameters
+        ----------
+        docx_path: str :
+            
+
+        Returns
+        -------
+
+        """
         # def _get_png(self, doc: DocxTemplate) -> Image:
         """функция печати docx в Image"""
 
@@ -87,6 +101,25 @@ class PassportDocumentGenerator(BaseDocumentGenerator):
         u (int, default = 350) - координата верхней стороны вырезаемого квадрата под фотографию,
         r (int, default = 580) - координата правой стороны вырезаемого квадрата под фотографию,
         d (int, default = 440) - координата нижней стороны вырезаемого квадрата под фотографию,
+
+        Parameters
+        ----------
+        pasp_image: Image :
+            
+        photo_path: str :
+            
+        l: int :
+             (Default value = 465)
+        u: int :
+             (Default value = 350)
+        r: int :
+             (Default value = 580)
+        d: int :
+             (Default value = 440)
+
+        Returns
+        -------
+
         """
 
         with Image.open(photo_path) as photo:
@@ -109,6 +142,23 @@ class PassportDocumentGenerator(BaseDocumentGenerator):
         u (default = 90) - координата верхней стороны вырезаемого квадрата,
         r (default = 660) - координата правой стороны вырезаемого квадрата,
         d (default = 470) - координата нижней стороны вырезаемого квадрата,
+
+        Parameters
+        ----------
+        pasp_image: Image :
+            
+        l :
+             (Default value = 135)
+        u :
+             (Default value = 90)
+        r :
+             (Default value = 660)
+        d :
+             (Default value = 470)
+
+        Returns
+        -------
+
         """
 
         pasp_image = pasp_image.crop((l, u, r, d))
@@ -127,6 +177,15 @@ class PassportDocumentGenerator(BaseDocumentGenerator):
         - полный номер (серия и номер);
         - полное место рождения;
         - полное место выдачи.
+
+        Parameters
+        ----------
+        annotations: dict :
+            
+
+        Returns
+        -------
+
         """
 
         full_name = annotations["fam1"]["value"]

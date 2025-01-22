@@ -34,6 +34,7 @@ class SnilsData:
 
 @dataclass
 class PassportData:
+    """ """
     pser: Entity
     pnum: Entity
     pser2: Entity  # для картинки нужны разные поля (bbox)
@@ -73,6 +74,20 @@ class PassportData:
     }
 
     def set_bboxes(self, key: Entity, bbx: list):
+        """
+        
+
+        Parameters
+        ----------
+        key: Entity :
+            
+        bbx: list :
+            
+
+        Returns
+        -------
+
+        """
         self.key["bboxes"] = bbx
 
 
